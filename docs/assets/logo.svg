@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Exam Agent Logo</title>
+  <desc id="desc">A low-saturation blue EA monogram surrounded by connected data nodes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="24" y1="20" x2="136" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7893AB"/>
+      <stop offset="1" stop-color="#4F6F8B"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="136" height="136" rx="36" fill="#EEF3F6"/>
+  <circle cx="80" cy="80" r="49" fill="none" stroke="#A9BAC8" stroke-width="2" stroke-dasharray="3 7"/>
+  <path d="M43 47h23M43 47v66h25M43 79h20M91 113l18-66 18 66M98 88h22" fill="none" stroke="url(#bg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#6F8BA3">
+    <circle cx="80" cy="24" r="5"/>
+    <circle cx="136" cy="80" r="5"/>
+    <circle cx="80" cy="136" r="5"/>
+    <circle cx="24" cy="80" r="5"/>
+  </g>
+  <g stroke="#9FB2C1" stroke-width="2">
+    <path d="M80 29v8M131 80h-8M80 131v-8M29 80h8"/>
+  </g>
+</svg>
