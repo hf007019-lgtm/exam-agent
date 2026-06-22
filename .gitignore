@@ -1,0 +1,98 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Local data, uploads, and private source files
+/data/
+/uploads/
+/raw_private/
+/raw/
+/logs/
+/tmp/
+/temp/
+
+# Real tabular data is private by default
+*.xlsx
+*.xls
+*.csv
+
+# App local data
+app/data/**/*.csv
+app/data/**/*.xlsx
+app/data/**/*.xls
+app/data/**/*.db
+app/data/**/*.sqlite
+app/data/**/*.sqlite3
+
+# Keep public placeholders
+!app/data/**/README.md
+!app/data/**/.gitkeep
+
+# Allow sanitized, fictional sample data only
+!sample_data/
+!sample_data/**/*.md
+!sample_data/**/*.json
+!sample_data/**/*.csv
+
+# IDE and local agent state
+.idea/
+.vscode/
+.agents/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Frontend build and cache
+node_modules/
+dist/
+build/
+
+# Generated reports and browser verification artifacts
+docs/import_report_*.md
+browser_verification*
+screenshot*.png
+screenshots/
+test_result*.json
+
+# Temporary and backup files
+*_patch.*
+*_fixed.*
+*_redesign.*
+*_polish.*
+*_backup.*
+*_old.*
+copy_*
+*.bak
+*.tmp
+*.zip

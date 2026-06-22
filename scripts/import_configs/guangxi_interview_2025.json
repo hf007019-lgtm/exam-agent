@@ -1,0 +1,28 @@
+{
+  "year": 2025,
+  "target": "公务员",
+  "exam_type": "省考",
+  "region": "广西",
+  "doc_type": "interview_scores",
+  "input_dir": "raw_private/guangxi_2025_interview",
+  "output_path": "app/data/scores/job_scores_guangxi_2025.csv",
+  "field_mapping": {
+    "报考机关": "department",
+    "用人单位": "unit",
+    "报考职位代码": "position_code",
+    "报考职位名称": "position_name",
+    "职位最低笔试成绩": "score"
+  },
+  "privacy_fields": [
+    "姓名",
+    "性别",
+    "民族",
+    "准考证号",
+    "准考证号码",
+    "身份证号",
+    "身份证号码",
+    "手机号",
+    "手机号码",
+    "联系电话"
+  ]
+}

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f7f8fa">
+    <title>Exam Agent · AI 招考决策工作台</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/static/styles.css?v=20260621-import-workbench">
+</head>
+<body>
+    <a class="skip-link" href="#workspaceMain">跳到主要内容</a>
+
+    <div class="app-shell">
+        <aside id="sidebar" class="sidebar" aria-label="主导航">
+            <div class="brand-row">
+                <button class="brand" type="button" data-route-target="overview" aria-label="返回概览">
+                    <span class="brand-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M7 5.5h10M7 10h10M7 14.5h6M5 2.75h14A2.25 2.25 0 0 1 21.25 5v14A2.25 2.25 0 0 1 19 21.25H5A2.25 2.25 0 0 1 2.75 19V5A2.25 2.25 0 0 1 5 2.75Z"/></svg>
+                    </span>
+                    <span class="brand-copy">
+                        <strong>Exam Agent</strong>
+                        <small>AI 招考决策工作台</small>
+                    </span>
+                </button>
+                <button id="sidebarCollapseButton" class="icon-button desktop-only" type="button" aria-label="收起侧边栏" title="收起侧边栏">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 7-5 5 5 5"/><path d="M4 4h16v16H4z"/></svg>
+                </button>
+            </div>
+
+            <nav class="primary-nav" aria-label="功能导航">
+                <button class="nav-item active" type="button" data-route-target="overview">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+                    <span>概览</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="analyst">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10h8M8 14h5"/><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 3v-5a2 2 0 0 1-1-1.73V6a2 2 0 0 1 2-2Z"/></svg>
+                    <span>招考分析师</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="single-job">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M8 10.5h5M10.5 8v5"/></svg>
+                    <span>单岗位查询</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="shortlist">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v16L12 17l-7.5 4V5A1.5 1.5 0 0 1 6 3.5Z"/></svg>
+                    <span>岗位备选</span>
+                    <span id="shortlistNavCount" class="nav-count" hidden>0</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="compare">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M17 4v16M3.5 8H10M14 16h6.5M5 5.5 7 3.5l2 2M15 18.5l2 2 2-2"/></svg>
+                    <span>岗位对比</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="scores">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+                    <span>分数线参考</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="history">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10"/><circle cx="18" cy="17.5" r="2.5"/></svg>
+                    <span>分析记录</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="data-center">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6M4 11.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+                    <span>数据中心</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="data-import" aria-controls="dataImportPage">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10"/><path d="m8 9 4 4 4-4"/><path d="M4.5 15.5V18A2.5 2.5 0 0 0 7 20.5h10A2.5 2.5 0 0 0 19.5 18v-2.5"/><path d="M7 5.5h2M15 5.5h2"/></svg>
+                    <span>数据导入</span>
+                </button>
+                <button class="nav-item" type="button" data-route-target="profile">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c.7-4.1 3.2-6 7.5-6s6.8 1.9 7.5 6"/></svg>
+                    <span>我的画像</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <section class="sidebar-account-shell" aria-label="账号状态">
+                    <button id="accountMenuButton" class="sidebar-account-card" type="button" data-ui-action="account-menu" aria-haspopup="menu" aria-expanded="false">
+                        <span id="accountStatusDot" class="account-avatar" aria-hidden="true">未</span>
+                        <span class="account-main">
+                            <strong id="accountDisplayName">未登录</strong>
+                            <span id="accountStatusText">点击登录 / 注册</span>
+                        </span>
+                        <span class="account-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+                        </span>
+                    </button>
+                    <div id="accountMenu" class="account-menu" role="menu" hidden>
+                        <button id="accountAuthButton" class="account-menu-item danger" type="button" data-ui-action="account-auth" role="menuitem">
+                            退出登录
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </aside>
+
+        <div id="mobileScrim" class="mobile-scrim" hidden></div>
+
+        <div class="workspace">
+            <header class="mobile-header">
+                <button id="mobileMenuButton" class="icon-button" type="button" aria-label="打开导航">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+                <div>
+                    <strong>Exam Agent</strong>
+                    <span id="mobilePageTitle">概览</span>
+                </div>
+                <button class="icon-button" type="button" data-route-target="profile" aria-label="打开我的画像">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c.7-4.1 3.2-6 7.5-6s6.8 1.9 7.5 6"/></svg>
+                </button>
+            </header>
+
+            <div class="workspace-body">
+                <main id="workspaceMain" class="workspace-main" tabindex="-1">
+                    <section class="page-view active" data-page="overview" aria-labelledby="overviewTitle">
+                        <div class="overview-hero">
+                            <div>
+                                <p class="eyebrow">AI-powered exam decisions</p>
+                                <h1 id="overviewTitle">AI 招考决策工作台</h1>
+                                <p>用 AI 帮你筛岗位、看分数、问政策、做备选和对比。</p>
+                            </div>
+                            <button class="primary-button" type="button" data-route-target="analyst">
+                                开始咨询
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="overview-workspace-grid">
+                            <section class="surface-card" aria-labelledby="overviewProfileTitle">
+                                <div class="section-heading">
+                                    <div>
+                                        <p class="section-kicker">My profile</p>
+                                        <h2 id="overviewProfileTitle">我的画像状态</h2>
+                                    </div>
+                                    <button id="overviewProfileAction" class="quiet-button" type="button" data-route-target="profile">完善画像</button>
+                                </div>
+                                <p id="overviewProfileState" class="surface-description">尚未完善画像。</p>
+                                <div id="overviewProfileChips" class="profile-chip-list"></div>
+                            </section>
+
+                            <section class="surface-card" aria-labelledby="overviewProgressTitle">
+                                <div class="section-heading">
+                                    <div>
+                                        <p class="section-kicker">Decision progress</p>
+                                        <h2 id="overviewProgressTitle">决策进度</h2>
+                                    </div>
+                                    <button class="quiet-button" type="button" data-route-target="shortlist">继续整理</button>
+                                </div>
+                                <div class="decision-progress overview-progress">
+                                    <div><span>备选岗位</span><strong id="overviewShortlistCount">0</strong></div>
+                                    <div><span>对比岗位</span><strong id="overviewCompareCount">0</strong></div>
+                                    <div><span>最近分析</span><strong id="overviewAnalysisStatus">暂无</strong></div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <section class="surface-card overview-task-card" aria-labelledby="overviewTasksTitle">
+                            <div class="section-heading">
+                                <div>
+                                    <p class="section-kicker">Quick tasks</p>
+                                    <h2 id="overviewTasksTitle">接下来要做什么</h2>
+                                </div>
+                                <span class="section-helper">从一个明确任务开始</span>
+                            </div>
+                            <div class="quick-task-grid">
+                                <button type="button" data-start-analyst-prompt="按我的画像推荐岗位">
+                                    <span class="quick-task-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10h8M8 14h5"/><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 3v-5a2 2 0 0 1-1-1.73V6a2 2 0 0 1 2-2Z"/></svg></span>
+                                    <span><strong>按我的画像推荐岗位</strong><small>让分析师结合长期报考条件初筛</small></span>
+                                </button>
+                                <button type="button" data-route-target="single-job">
+                                    <span class="quick-task-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></span>
+                                    <span><strong>查询一个岗位代码</strong><small>查看目标岗位条件、分数和风险</small></span>
+                                </button>
+                                <button type="button" data-route-target="shortlist">
+                                    <span class="quick-task-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v16L12 17l-7.5 4V5A1.5 1.5 0 0 1 6 3.5Z"/></svg></span>
+                                    <span><strong>查看备选岗位</strong><small>继续沉淀值得关注的岗位</small></span>
+                                </button>
+                                <button type="button" data-route-target="compare">
+                                    <span class="quick-task-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M17 4v16M3.5 8H10M14 16h6.5"/></svg></span>
+                                    <span><strong>比较我的岗位</strong><small>对照限制、人数、分数和风险</small></span>
+                                </button>
+                                <button type="button" data-start-analyst-prompt="应届生身份怎么算？">
+                                    <span class="quick-task-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3 3V20.5H6z"/><path d="M15 3.5v4h4M9 11h6M9 15h6"/></svg></span>
+                                    <span><strong>问一个政策问题</strong><small>由分析师解释政策概念和核对方向</small></span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <section class="surface-card overview-coverage-card" aria-labelledby="coverageTitle">
+                            <div class="section-heading">
+                                <div>
+                                    <p class="section-kicker">Data coverage</p>
+                                    <h2 id="coverageTitle">数据覆盖情况</h2>
+                                </div>
+                                <button class="quiet-button" type="button" data-route-target="data-center">查看详情</button>
+                            </div>
+                            <div class="stat-grid compact">
+                                <div><strong id="overviewJobProvinceCount">--</strong><span>职位表地区</span></div>
+                                <div><strong id="overviewScoreProvinceCount">--</strong><span>分数线地区</span></div>
+                                <div><strong id="overviewYear">2025</strong><span>默认年份</span></div>
+                                <div><strong id="overviewDataStatus">读取中</strong><span>数据状态</span></div>
+                            </div>
+                            <p id="overviewCoverageNote" class="surface-description coverage-description">正在读取当前数据覆盖情况…</p>
+                        </section>
+                    </section>
+
+                    <section class="page-view analyst-page" data-page="analyst" aria-labelledby="analystTitle" hidden>
+                        <header class="page-header compact-header">
+                            <div>
+                                <h1 id="analystTitle">招考分析师</h1>
+                                <p>自然提问即可，分析师会按需调用岗位、分数和政策工具。</p>
+                            </div>
+                            <div class="analyst-session-actions">
+                                <span class="session-pill" id="analystSessionTitle">本地临时对话</span>
+                                <button class="quiet-button" type="button" data-ui-action="open-cloud-sessions">历史会话</button>
+                                <button id="clearChatButton" class="quiet-button" type="button">新对话</button>
+                            </div>
+                        </header>
+
+                        <aside class="analysis-disclaimer analyst-page-disclaimer" role="note" aria-label="AI 分析使用说明">
+                            <span class="analysis-disclaimer-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7h.01"/></svg>
+                            </span>
+                            <p>数据来源与 AI 分析仅供参考，岗位资格、分数线、招录条件以官方公告、职位表和招录单位解释为准。AI 可能存在理解偏差，请在报名前自行核对原始公告。</p>
+                        </aside>
+
+                        <section class="analyst-context-strip" aria-label="画像和本次分析条件">
+                            <div class="analyst-context-summary">
+                                <div>
+                                    <span>当前画像</span>
+                                    <strong id="analystProfileSummaryText">画像未完善</strong>
+                                </div>
+                                <div>
+                                    <span>本次条件</span>
+                                    <strong id="analystCurrentFilterSummary">正在读取当前条件…</strong>
+                                </div>
+                                <p id="analystConditionStatus" class="condition-status" role="status">正在核对画像与本次分析条件…</p>
+                                <p id="analystRecognizedConditions" class="recognized-conditions" role="status" hidden></p>
+                            </div>
+                            <div class="analyst-context-actions">
+                                <button id="analystProfileAction" class="text-button" type="button" data-route-target="profile">完善画像</button>
+                                <button class="text-button" type="button" data-ui-action="toggle-analysis-filters" aria-expanded="false" aria-controls="analystFilterPanel">调整条件</button>
+                            </div>
+                            <div id="analystFilterPanel" class="analyst-filter-panel" hidden>
+                                <div id="analystProfileBar" class="profile-bar" aria-label="当前分析条件">
+                                <label>考试
+                                    <select id="analystExamType">
+                                        <option value="省考">省考</option>
+                                        <option value="国考">国考</option>
+                                        <option value="事业单位">事业单位</option>
+                                    </select>
+                                </label>
+                                <label>省份
+                                    <select id="analystRegion"></select>
+                                </label>
+                                <label>城市
+                                    <select id="analystCity"></select>
+                                </label>
+                                <label>学历
+                                    <select id="analystEducation"></select>
+                                </label>
+                                <label>专业
+                                    <input id="analystMajor" type="text" autocomplete="organization-title" placeholder="填写专业">
+                                </label>
+                                <label>身份
+                                    <select id="analystIdentity"></select>
+                                </label>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div id="chatMessages" class="chat-message-list" aria-live="polite">
+                            <div class="chat-empty-state">
+                                <span class="chat-empty-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M8 10h8M8 14h5"/><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 3v-5a2 2 0 0 1-1-1.73V6a2 2 0 0 1 2-2Z"/></svg>
+                                </span>
+                                <div>
+                                    <strong>从一个真实问题开始</strong>
+                                    <p>你可以直接问我怎么选岗，也可以让我按你的画像推荐岗位。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="analyst-composer-zone">
+                            <div id="quickPromptGroups" class="quick-prompt-groups" aria-label="全部快捷问题" hidden>
+                                <section class="quick-prompt-group" aria-labelledby="promptAdviceTitle">
+                                    <strong id="promptAdviceTitle">选岗建议</strong>
+                                    <div class="quick-prompt-row">
+                                        <button type="button" data-analyst-prompt="我该怎么选岗？">我该怎么选岗？</button>
+                                        <button type="button" data-analyst-prompt="软件工程考公适合什么方向？">软件工程考公适合什么方向？</button>
+                                    </div>
+                                </section>
+                                <section class="quick-prompt-group" aria-labelledby="promptRecommendTitle">
+                                    <strong id="promptRecommendTitle">岗位推荐</strong>
+                                    <div class="quick-prompt-row">
+                                        <button type="button" data-analyst-prompt="按我的画像推荐一个岗位">按我的画像推荐一个岗位</button>
+                                        <button type="button" data-analyst-prompt="推荐 3 个可报岗位">推荐 3 个可报岗位</button>
+                                    </div>
+                                </section>
+                                <section class="quick-prompt-group" aria-labelledby="promptRiskTitle">
+                                    <strong id="promptRiskTitle">分数风险</strong>
+                                    <div class="quick-prompt-row">
+                                        <button type="button" data-analyst-prompt="为什么不能只看最低进面分？">为什么不能只看最低进面分？</button>
+                                        <button type="button" data-analyst-prompt="没有竞争比还能不能报？">没有竞争比还能不能报？</button>
+                                    </div>
+                                </section>
+                                <section class="quick-prompt-group" aria-labelledby="promptPolicyTitle">
+                                    <strong id="promptPolicyTitle">政策解释</strong>
+                                    <div class="quick-prompt-row">
+                                        <button type="button" data-analyst-prompt="应届生身份怎么算？">应届生身份怎么算？</button>
+                                        <button type="button" data-analyst-prompt="服务基层项目人员是什么意思？">服务基层项目人员是什么意思？</button>
+                                        <button type="button" data-analyst-prompt="专业目录怎么看？">专业目录怎么看？</button>
+                                        <button type="button" data-analyst-prompt="资格审查主要查什么？">资格审查主要查什么？</button>
+                                    </div>
+                                </section>
+                                <button class="collapse-prompt-button" type="button" data-ui-action="show-all-prompts">收起快捷问题</button>
+                            </div>
+                            <div id="compactPromptRow" class="compact-prompt-row" aria-label="继续提问建议">
+                                <button type="button" data-analyst-prompt="我该怎么选岗？">我该怎么选岗？</button>
+                                <button type="button" data-analyst-prompt="按我的画像推荐一个岗位">按画像推荐一个岗位</button>
+                                <button type="button" data-analyst-prompt="为什么不能只看最低进面分？">为什么不能只看最低进面分？</button>
+                                <button type="button" data-analyst-prompt="应届生身份怎么算？">应届生身份怎么算？</button>
+                                <button type="button" data-ui-action="show-all-prompts" aria-expanded="false" aria-controls="quickPromptGroups">更多</button>
+                            </div>
+                            <form id="analysisForm" class="composer" aria-label="向招考分析师提问">
+                                <label class="visually-hidden" for="question">咨询问题</label>
+                                <textarea id="question" rows="2" placeholder="输入报考条件、岗位代码或政策问题，直接问我怎么选岗…"></textarea>
+                                <div class="composer-footer">
+                                    <span>Enter 发送 · Shift + Enter 换行</span>
+                                    <button id="analyzeButton" class="send-button" type="submit" aria-label="发送问题" disabled>
+                                        <svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6.5 10.5 12 5l5.5 5.5"/></svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section class="page-view" data-page="single-job" aria-labelledby="singleJobTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Position lookup</p>
+                                <h1 id="singleJobTitle">单岗位查询</h1>
+                                <p>适合你已经有目标岗位代码时使用，也支持按岗位名称或单位名称查询。</p>
+                            </div>
+                        </header>
+
+                        <form id="singleJobForm" class="search-panel">
+                            <label class="search-field wide" for="singleJobQuery">
+                                <span>岗位信息</span>
+                                <div class="input-with-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+                                    <input id="singleJobQuery" type="search" placeholder="输入职位代码、岗位名称或单位名称" required>
+                                </div>
+                            </label>
+                            <label>省份
+                                <select id="singleJobProvince"></select>
+                            </label>
+                            <label>年份
+                                <select id="singleJobYear"><option value="2025">2025</option></select>
+                            </label>
+                            <label>考试类型
+                                <select id="singleJobExamType">
+                                    <option value="省考">省考</option>
+                                    <option value="国考">国考</option>
+                                </select>
+                            </label>
+                            <button id="singleJobSubmitButton" class="primary-button" type="submit">查询岗位</button>
+                        </form>
+
+                        <div id="singleJobResult" class="result-stack" aria-live="polite">
+                            <div class="empty-state compact-empty">
+                                <span class="empty-icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></span>
+                                <strong>等待查询</strong>
+                                <p>输入职位代码可获得更精确的结果，也可以使用岗位名称或单位名称。</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="page-view" data-page="shortlist" aria-labelledby="shortlistTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Decision shortlist</p>
+                                <h1 id="shortlistTitle">岗位备选</h1>
+                                <p>这里保存你关注的岗位，后续可以集中比较招录人数、分数线、专业限制和风险。</p>
+                            </div>
+                            <button id="clearShortlistButton" class="danger-quiet-button" type="button">清空全部</button>
+                        </header>
+                        <div id="shortlistSummary" class="inline-summary"></div>
+                        <div id="shortlistList" class="result-stack"></div>
+                    </section>
+
+                    <section class="page-view" data-page="compare" aria-labelledby="compareTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Side-by-side review</p>
+                                <h1 id="compareTitle">岗位对比</h1>
+                                <p>从备选中选择 2–5 个岗位，集中比较条件、历史分数和风险。</p>
+                            </div>
+                        </header>
+                        <div id="compareSelector" class="compare-selector"></div>
+                        <div id="compareContent" class="compare-content"></div>
+                    </section>
+
+                    <section class="page-view" data-page="scores" aria-labelledby="scoresTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Historical references</p>
+                                <h1 id="scoresTitle">分数线参考</h1>
+                                <p>查看已导入地区的历史进面分数据。</p>
+                            </div>
+                        </header>
+
+                        <div class="page-notice" role="note">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7.25v.5"/></svg>
+                            <span>历史进面分只作为参考，不代表今年难度。</span>
+                        </div>
+
+                        <form id="scoreFilterForm" class="filter-panel">
+                            <label>省份
+                                <select id="scoreProvince"><option value="">全部已导入省份</option></select>
+                            </label>
+                            <label>年份
+                                <select id="scoreYear"><option value="2025">2025</option></select>
+                            </label>
+                            <label>岗位 / 单位 / 地区关键词
+                                <input id="scoreKeyword" type="search" placeholder="岗位、单位、地区或分段标题">
+                            </label>
+                            <label>职位代码
+                                <input id="scorePositionCode" type="search" inputmode="numeric" placeholder="精确代码">
+                            </label>
+                            <button id="scoreFilterButton" class="primary-button" type="submit">筛选记录</button>
+                        </form>
+                        <div id="scoreResultSummary" class="inline-summary"></div>
+                        <div id="scoreResults" class="score-list"></div>
+                    </section>
+
+                    <section class="page-view" data-page="history" aria-labelledby="historyTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Decision history</p>
+                                <h1 id="historyTitle">分析记录</h1>
+                                <p>这里记录你的提问、岗位分析、备选操作和政策解释，方便回顾选岗过程。</p>
+                            </div>
+                            <button id="clearHistoryButton" class="danger-quiet-button" type="button">清空记录</button>
+                        </header>
+
+                        <div class="history-toolbar">
+                            <label for="historyTypeFilter">记录类型
+                                <select id="historyTypeFilter">
+                                    <option value="">全部</option>
+                                    <option value="chat">对话</option>
+                                    <option value="recommendation">岗位推荐</option>
+                                    <option value="single_job_analysis">单岗位分析</option>
+                                    <option value="policy">政策解释</option>
+                                    <option value="score_risk">分数风险</option>
+                                    <option value="shortlist">备选操作</option>
+                                    <option value="compare">对比操作</option>
+                                    <option value="error">错误记录</option>
+                                </select>
+                            </label>
+                            <div id="historySummary" class="inline-summary"></div>
+                        </div>
+                        <div id="analysisHistoryList" class="history-list" aria-live="polite"></div>
+                    </section>
+
+                    <section class="page-view" data-page="data-center" aria-labelledby="dataCenterTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Imported datasets</p>
+                                <h1 id="dataCenterTitle">数据中心</h1>
+                                <p>查看系统当前已导入的数据覆盖情况。这里展示用户友好的数据描述，不显示内部文件名。</p>
+                            </div>
+                        </header>
+
+                        <div class="stat-grid">
+                            <div><strong id="dataProvinceCount">--</strong><span>覆盖省份</span></div>
+                            <div><strong id="dataJobRecordCount">--</strong><span>岗位记录</span></div>
+                            <div><strong id="dataScoreRecordCount">--</strong><span>分数记录</span></div>
+                            <div><strong id="dataReviewRecordCount">--</strong><span>资格复审记录</span></div>
+                            <div><strong id="dataDefaultYear">2025</strong><span>默认年份</span></div>
+                        </div>
+
+                        <div class="dataset-grid">
+                            <section class="surface-card">
+                                <div class="section-heading">
+                                    <div>
+                                        <p class="section-kicker">Job datasets</p>
+                                        <h2>职位表数据</h2>
+                                    </div>
+                                </div>
+                                <div id="jobDatasetList" class="dataset-list">
+                                    <div class="dataset-skeleton" aria-label="正在读取职位表数据"></div>
+                                    <div class="dataset-skeleton" aria-hidden="true"></div>
+                                </div>
+                            </section>
+                            <section class="surface-card">
+                                <div class="section-heading">
+                                    <div>
+                                        <p class="section-kicker">Score datasets</p>
+                                        <h2>分数表数据</h2>
+                                    </div>
+                                </div>
+                                <div id="scoreDatasetList" class="dataset-list">
+                                    <div class="dataset-skeleton" aria-label="正在读取分数表数据"></div>
+                                    <div class="dataset-skeleton" aria-hidden="true"></div>
+                                </div>
+                            </section>
+                            <section class="surface-card">
+                                <div class="section-heading">
+                                    <div>
+                                        <p class="section-kicker">Review candidate datasets</p>
+                                        <h2>资格复审名单</h2>
+                                    </div>
+                                </div>
+                                <div id="reviewDatasetList" class="dataset-list">
+                                    <div class="dataset-skeleton" aria-label="正在读取资格复审名单"></div>
+                                    <div class="dataset-skeleton" aria-hidden="true"></div>
+                                </div>
+                            </section>
+                            <section class="surface-card">
+                                <div class="section-heading">
+                                    <div>
+                                        <p class="section-kicker">Other structured datasets</p>
+                                        <h2>其他结构化数据</h2>
+                                    </div>
+                                </div>
+                                <div id="otherDatasetList" class="dataset-list">
+                                    <div class="dataset-skeleton" aria-label="正在读取其他结构化数据"></div>
+                                    <div class="dataset-skeleton" aria-hidden="true"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+
+                    <section id="dataImportPage" class="page-view" data-page="data-import" aria-labelledby="dataImportTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Structured import</p>
+                                <h1 id="dataImportTitle">结构化数据导入</h1>
+                                <p>上传岗位表、分数线表、候选人成绩、资格复审名单、报名人数表或专业目录表，系统会自动识别、清洗并生成预览，确认后写入结构化数据源。</p>
+                            </div>
+                        </header>
+
+                        <section class="surface-card import-upload-card" aria-labelledby="importUploadTitle">
+                            <div class="section-heading">
+                                <div>
+                                    <p class="section-kicker">支持 Excel / CSV</p>
+                                    <h2 id="importUploadTitle">上传并识别结构化招考数据</h2>
+                                </div>
+                                <span class="section-helper">.xlsx / .xls / .csv</span>
+                            </div>
+                            <p class="surface-description">适用于岗位表、进面分数线、候选人成绩、资格复审名单、报名人数/竞争比、专业目录等结构化招考数据。</p>
+
+                            <form id="importUploadForm" class="import-form">
+                                <label class="import-file-field">
+                                    <input id="importFile" name="file" type="file" accept=".xlsx,.xls,.csv">
+                                    <span id="importFileEmptyState" class="import-dropzone-content">
+                                        <span class="import-file-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 20V5a1.5 1.5 0 0 1 1-1.5Z"/><path d="M14 3.5V8h4M12 18v-6M9.5 14.5 12 12l2.5 2.5"/></svg>
+                                        </span>
+                                        <span class="import-file-copy">
+                                            <strong>点击上传招考数据文件</strong>
+                                            <small id="importFileHint">支持 .xlsx / .xls / .csv，适用于岗位表、分数线表、候选人成绩、资格复审名单等</small>
+                                        </span>
+                                    </span>
+                                    <span id="importFileSelectedState" class="import-selected-file" hidden>
+                                        <span class="import-selected-file-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 20V5a1.5 1.5 0 0 1 1-1.5Z"/><path d="M14 3.5V8h4"/></svg>
+                                        </span>
+                                        <span class="import-selected-file-copy">
+                                            <strong id="importSelectedFileName">已选择文件</strong>
+                                            <small>已选择，点击上传并识别后生成预览</small>
+                                        </span>
+                                        <span class="import-reselect-label">重新选择</span>
+                                    </span>
+                                </label>
+                                <div class="form-grid import-meta-grid">
+                                    <label>省份 province
+                                        <input id="importProvince" name="province" type="text" placeholder="选择文件后自动识别，可手动修改" autocomplete="off">
+                                    </label>
+                                    <label>考试类型 exam_type
+                                        <select id="importExamType" name="exam_type">
+                                            <option value="公务员">公务员</option>
+                                            <option value="事业单位">事业单位</option>
+                                            <option value="省考">省考</option>
+                                            <option value="国考">国考</option>
+                                        </select>
+                                    </label>
+                                    <label>年份 year
+                                        <input id="importYear" name="year" type="number" inputmode="numeric" min="2000" max="2100" value="2025">
+                                    </label>
+                                </div>
+                                <p id="importAutoDetectHint" class="import-auto-detect-hint" hidden></p>
+                                <div class="import-actions">
+                                    <button id="importUploadButton" class="primary-button" type="submit">上传并识别</button>
+                                    <button id="importResetButton" class="quiet-button" type="button">重新选择文件</button>
+                                </div>
+                            </form>
+                            <div id="importStatus" class="import-status" aria-live="polite" hidden></div>
+                        </section>
+
+                        <section id="importPreviewSection" class="surface-card import-result-card" aria-labelledby="importPreviewTitle" hidden>
+                            <div class="section-heading">
+                                <div>
+                                    <p class="section-kicker">Preview</p>
+                                    <h2 id="importPreviewTitle">识别预览</h2>
+                                </div>
+                                <button id="importConfirmButton" class="primary-button" type="button">确认入库</button>
+                            </div>
+                            <ol id="importWorkflowSteps" class="import-workflow-steps" aria-label="数据导入进度"></ol>
+                            <div id="importSummary" class="import-summary-grid"></div>
+                            <div class="import-result-block">
+                                <h3>字段映射</h3>
+                                <div id="importFieldMapping" class="mapping-list"></div>
+                            </div>
+                            <div class="import-result-block">
+                                <h3>分数据集清洗预览</h3>
+                                <div id="importPreviewRows" class="import-table-wrap"></div>
+                            </div>
+                            <div class="import-result-block">
+                                <h3>Warning 明细与失败原因</h3>
+                                <div id="importWarnings" class="warning-list"></div>
+                            </div>
+                        </section>
+
+                        <section id="importConfirmSection" class="surface-card import-confirm-card" aria-labelledby="importConfirmTitle" hidden>
+                            <div class="section-heading">
+                                <div>
+                                    <p class="section-kicker">Import result</p>
+                                    <h2 id="importConfirmTitle">入库结果</h2>
+                                </div>
+                            </div>
+                            <div id="importConfirmResult" class="import-summary-grid"></div>
+                        </section>
+                    </section>
+
+                    <section class="page-view" data-page="profile" aria-labelledby="profileTitle" hidden>
+                        <header class="page-header">
+                            <div>
+                                <p class="eyebrow">Candidate profile</p>
+                                <h1 id="profileTitle">我的报考画像</h1>
+                                <p>保存你的长期报考条件。招考分析师会优先读取画像，并允许你在对话页临时覆盖。</p>
+                            </div>
+                        </header>
+
+                        <form id="profileForm" class="profile-form">
+                            <section class="form-section">
+                                <div class="form-section-heading">
+                                    <span>01</span>
+                                    <div><h2>基础报考条件</h2><p>用于判断岗位硬性条件和默认筛选范围。</p></div>
+                                </div>
+                                <div class="form-grid">
+                                    <label>考试类型
+                                        <select id="profileExamType" name="exam_type">
+                                            <option value="">未填写</option>
+                                            <option value="省考">省考</option>
+                                            <option value="国考">国考</option>
+                                            <option value="事业单位">事业单位</option>
+                                        </select>
+                                    </label>
+                                    <label>目标省份
+                                        <select id="profileProvince" name="province"></select>
+                                    </label>
+                                    <label>目标城市
+                                        <select id="profileCity" name="city"></select>
+                                    </label>
+                                    <label>学历
+                                        <select id="profileEducation" name="education"></select>
+                                    </label>
+                                    <label class="span-two">专业
+                                        <input id="profileMajor" name="major" type="text" placeholder="例如：软件工程">
+                                    </label>
+                                    <label>身份
+                                        <select id="profileIdentity" name="identity"></select>
+                                    </label>
+                                    <label>是否接受异地
+                                        <select id="profileRelocation" name="accept_relocation">
+                                            <option value="视岗位而定">视岗位而定</option>
+                                            <option value="接受">接受</option>
+                                            <option value="不接受">不接受</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </section>
+
+                            <section class="form-section">
+                                <div class="form-section-heading">
+                                    <span>02</span>
+                                    <div><h2>偏好方向</h2><p>可多选，用于后续岗位排序和分析解释。</p></div>
+                                </div>
+                                <fieldset class="preference-grid">
+                                    <legend class="visually-hidden">偏好方向</legend>
+                                    <label><input type="checkbox" name="preferences" value="信息化"><span>信息化</span></label>
+                                    <label><input type="checkbox" name="preferences" value="大数据"><span>大数据</span></label>
+                                    <label><input type="checkbox" name="preferences" value="网络安全"><span>网络安全</span></label>
+                                    <label><input type="checkbox" name="preferences" value="综合管理"><span>综合管理</span></label>
+                                    <label><input type="checkbox" name="preferences" value="基层岗位"><span>基层岗位</span></label>
+                                    <label><input type="checkbox" name="preferences" value="公安岗"><span>公安岗</span></label>
+                                    <label><input type="checkbox" name="preferences" value="法院检察院"><span>法院检察院</span></label>
+                                    <label><input type="checkbox" name="preferences" value="税务"><span>税务</span></label>
+                                    <label><input type="checkbox" name="preferences" value="其他"><span>其他</span></label>
+                                </fieldset>
+                            </section>
+
+                            <div class="form-actions">
+                                <span id="profileSaveStatus">画像保存在当前浏览器中。</span>
+                                <button class="primary-button" type="submit">保存报考画像</button>
+                            </div>
+                        </form>
+                    </section>
+                </main>
+
+                <aside id="contextPanel" class="context-panel" aria-label="决策侧边栏">
+                    <div class="context-panel-header">
+                        <div>
+                            <p>Decision workspace</p>
+                            <strong>决策侧边栏</strong>
+                        </div>
+                        <button id="contextPanelToggle" class="icon-button" type="button" aria-label="收起决策侧边栏">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 7 5 5-5 5"/></svg>
+                        </button>
+                    </div>
+                    <div class="context-block context-primary-block">
+                        <div class="context-block-heading">
+                            <strong>当前画像</strong>
+                            <button type="button" data-route-target="profile">编辑</button>
+                        </div>
+                        <div id="contextProfile" class="context-profile"></div>
+                    </div>
+                    <div class="context-divider"></div>
+                    <div class="context-block">
+                        <div class="context-block-heading">
+                            <strong>本次分析条件</strong>
+                            <button type="button" data-route-target="analyst">调整</button>
+                        </div>
+                        <div id="contextFilterSummary" class="context-profile"></div>
+                        <p id="contextFilterMatch" class="context-match-status">正在核对画像与本次条件…</p>
+                        <p id="contextRecognizedConditions" class="recognized-conditions" role="status" hidden></p>
+                    </div>
+                    <div class="context-divider"></div>
+                    <div class="context-block">
+                        <div class="context-block-heading">
+                            <strong>决策进度</strong>
+                            <button type="button" data-route-target="history">记录</button>
+                        </div>
+                        <div class="decision-progress">
+                            <div><span>备选岗位</span><strong id="contextShortlistCount">0</strong></div>
+                            <div><span>对比岗位</span><strong id="contextCompareCount">0</strong></div>
+                            <div><span>最近分析岗位</span><strong id="contextRecentAnalysisCount">暂无</strong></div>
+                        </div>
+                    </div>
+                    <div class="context-divider"></div>
+                    <div class="context-block">
+                        <div class="context-block-heading">
+                            <strong>下一步建议</strong>
+                        </div>
+                        <p id="contextNextStep">建议先完善画像，分析师可以更准确地推荐岗位。</p>
+                        <button id="contextNextStepAction" class="context-action-button" type="button" data-route-target="profile">去完善画像</button>
+                    </div>
+                    <div class="context-divider"></div>
+                    <div class="context-block">
+                        <div class="context-block-heading">
+                            <strong>数据状态</strong>
+                            <button type="button" data-route-target="data-center">详情</button>
+                        </div>
+                        <div class="decision-progress context-data-progress">
+                            <div><span>职位表地区</span><strong id="contextJobProvinceCount">--</strong></div>
+                            <div><span>分数线地区</span><strong id="contextScoreProvinceCount">--</strong></div>
+                            <div><span>默认年份</span><strong id="contextDataYear">2025</strong></div>
+                        </div>
+                        <p id="contextDataSummary">正在读取当前数据覆盖情况…</p>
+                    </div>
+                    <div class="context-notice">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7.25v.5"/></svg>
+                        <p>所有建议仅用于初筛。正式报名请核对最新公告、职位表、专业目录和资格审查要求。</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <dialog id="datasetRowsDialog" class="app-dialog dataset-viewer-dialog" aria-labelledby="datasetRowsTitle">
+        <section class="dialog-card dataset-viewer-card">
+            <div class="dialog-header dataset-viewer-header">
+                <div>
+                    <p class="section-kicker">Normalized database rows</p>
+                    <h2 id="datasetRowsTitle">在线查看数据</h2>
+                    <p id="datasetRowsMeta" class="dataset-viewer-meta">正在读取数据集信息…</p>
+                    <p id="datasetRowsPrivacy" class="dataset-viewer-privacy" role="note" hidden></p>
+                    <p class="dataset-viewer-reimport">如发现类型或字段映射异常，请返回“数据导入”重新上传并确认映射。</p>
+                </div>
+                <button class="icon-button" type="button" data-dialog-close="datasetRowsDialog" aria-label="关闭在线数据查看窗口">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+                </button>
+            </div>
+
+            <form id="datasetRowsSearchForm" class="dataset-viewer-search" role="search">
+                <label class="visually-hidden" for="datasetRowsKeyword">搜索数据集明细</label>
+                <input id="datasetRowsKeyword" name="keyword" type="search" maxlength="200" placeholder="搜索岗位代码、岗位名称或招录单位" autocomplete="off">
+                <button class="quiet-button" type="submit">搜索</button>
+            </form>
+
+            <div id="datasetRowsContent" class="dataset-viewer-content" aria-live="polite">
+                <div class="dataset-viewer-loading">正在读取数据库明细…</div>
+            </div>
+
+            <footer class="dataset-viewer-footer">
+                <p id="datasetRowsPageSummary">第 1 / 1 页 · 共 0 条</p>
+                <div class="dataset-viewer-pagination">
+                    <label for="datasetRowsPageSize">每页</label>
+                    <select id="datasetRowsPageSize" aria-label="每页显示数量">
+                        <option value="25">25 条</option>
+                        <option value="50" selected>50 条</option>
+                        <option value="100">100 条</option>
+                        <option value="200">200 条</option>
+                    </select>
+                    <button id="datasetRowsPrevious" class="quiet-button compact-button" type="button" data-ui-action="dataset-rows-previous">上一页</button>
+                    <button id="datasetRowsNext" class="quiet-button compact-button" type="button" data-ui-action="dataset-rows-next">下一页</button>
+                </div>
+            </footer>
+        </section>
+    </dialog>
+
+    <dialog id="authDialog" class="app-dialog auth-dialog" aria-labelledby="authDialogTitle">
+        <form id="devLoginForm" class="dialog-card auth-card" data-auth-form-mode="login">
+            <button class="auth-close-button" type="button" data-dialog-close="authDialog" aria-label="关闭登录窗口">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+            </button>
+
+            <div class="auth-hero">
+                <span class="auth-hero-icon" aria-hidden="true">EA</span>
+                <div class="auth-hero-copy">
+                    <p class="section-kicker">Account</p>
+                    <h2 id="authDialogTitle">登录到工作台</h2>
+                    <p id="authDialogSubtitle">保存画像、备选岗位、长期会话和 Agent 运行记录。</p>
+                </div>
+            </div>
+
+            <div class="auth-mode-switch" role="tablist" aria-label="账号操作">
+                <button class="auth-mode-option active" type="button" role="tab" aria-selected="true" data-auth-switch="login">登录</button>
+                <button class="auth-mode-option" type="button" role="tab" aria-selected="false" data-auth-switch="register">注册</button>
+            </div>
+
+            <div class="dialog-form-grid auth-form-grid">
+                <label for="devLoginUsername">
+                    <span>用户名</span>
+                    <input id="devLoginUsername" name="username" type="text" autocomplete="username" required minlength="2" maxlength="64" placeholder="输入用户名">
+                </label>
+                <label for="devLoginPassword">
+                    <span>密码</span>
+                    <input id="devLoginPassword" name="password" type="password" autocomplete="current-password" required minlength="6" maxlength="128" placeholder="输入密码">
+                </label>
+                <label class="auth-register-only" for="devLoginNickname">
+                    <span>昵称</span>
+                    <input id="devLoginNickname" name="nickname" type="text" autocomplete="nickname" maxlength="80" placeholder="注册时可填写">
+                </label>
+                <label class="auth-register-only" for="devLoginEmail">
+                    <span>邮箱</span>
+                    <input id="devLoginEmail" name="email" type="email" autocomplete="email" maxlength="200" placeholder="注册时可选">
+                </label>
+            </div>
+
+            <p id="devLoginError" class="dialog-error auth-error" role="alert" hidden></p>
+
+            <div class="dialog-actions auth-actions">
+                <button id="devLoginSubmitButton" class="primary-button auth-submit-button" type="submit" data-auth-mode="login">登录</button>
+            </div>
+            <p id="authModeHint" class="auth-mode-hint">还没有账号？切换到注册即可创建。</p>
+        </form>
+    </dialog>
+
+    <dialog id="cloudDialog" class="app-dialog wide-dialog" aria-labelledby="cloudDialogTitle">
+        <section class="dialog-card">
+            <div class="dialog-header">
+                <div>
+                    <p id="cloudDialogKicker" class="section-kicker">Cloud workspace</p>
+                    <h2 id="cloudDialogTitle">云端工作区</h2>
+                </div>
+                <button class="icon-button" type="button" data-dialog-close="cloudDialog" aria-label="关闭云端工作区">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+                </button>
+            </div>
+            <div id="cloudDialogContent" class="cloud-dialog-content" aria-live="polite">
+                <div class="cloud-loading">正在读取数据…</div>
+            </div>
+        </section>
+    </dialog>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="/static/app.js?v=20260621-import-workbench"></script>
+</body>
+</html>

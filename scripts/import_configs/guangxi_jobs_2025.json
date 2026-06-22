@@ -1,0 +1,9 @@
+{
+  "year": 2025,
+  "target": "公务员",
+  "exam_type": "省考",
+  "region": "广西",
+  "doc_type": "jobs",
+  "input_dir": "raw_private/guangxi_2025_jobs",
+  "output_path": "app/data/jobs/jobs_guangxi_2025.csv"
+}
