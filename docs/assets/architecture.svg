@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7FAFF"/>
+      <stop offset="100%" stop-color="#EEF6FF"/>
+    </linearGradient>
+    <linearGradient id="main" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F7CFF"/>
+      <stop offset="100%" stop-color="#35B8C5"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1E3A5F" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#5B7FA6"/>
+    </marker>
+    <style>
+      .font { font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif; }
+      .title { font-size: 38px; font-weight: 800; fill: #102033; }
+      .subtitle { font-size: 17px; fill: #5F7188; }
+      .layer-title { font-size: 21px; font-weight: 800; fill: #16304D; }
+      .layer-sub { font-size: 14px; fill: #6B7E94; }
+      .chip { font-size: 15px; font-weight: 650; fill: #25435F; }
+      .storage { font-size: 16px; font-weight: 700; fill: #22415E; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="860" rx="32" fill="url(#bg)"/>
+  <circle cx="1010" cy="130" r="150" fill="#D9F7FF" opacity="0.42"/>
+  <circle cx="160" cy="700" r="180" fill="#E1EAFF" opacity="0.45"/>
+
+  <g class="font">
+    <rect x="74" y="54" width="1052" height="110" rx="28" fill="white" opacity="0.88" filter="url(#shadow)"/>
+    <rect x="104" y="82" width="58" height="58" rx="16" fill="url(#main)"/>
+    <path d="M121 118 H140 V103 H157 V95 H121 Z" fill="white" opacity="0.96"/>
+    <text x="188" y="110" class="title">Exam Agent 系统架构</text>
+    <text x="188" y="140" class="subtitle">结构化数据工具 + Agent 分析编排 · 本地可运行的招考数据分析工作台</text>
+  </g>
+
+  <rect x="74" y="196" width="1052" height="598" rx="30" fill="white" opacity="0.92" filter="url(#shadow)"/>
+
+  <g class="font">
+    <rect x="126" y="236" width="948" height="105" rx="22" fill="#EFF7FF" stroke="#CFE1F8" stroke-width="1.5"/>
+    <text x="166" y="274" class="layer-title">Web 工作台</text>
+    <text x="166" y="300" class="layer-sub">面向用户的招考分析、数据核对与选岗决策入口</text>
+    <rect x="500" y="256" width="112" height="42" rx="21" fill="#FFFFFF" stroke="#D4E3F5"/><text x="526" y="283" class="chip">招考分析师</text>
+    <rect x="626" y="256" width="96" height="42" rx="21" fill="#FFFFFF" stroke="#D4E3F5"/><text x="651" y="283" class="chip">数据导入</text>
+    <rect x="736" y="256" width="96" height="42" rx="21" fill="#FFFFFF" stroke="#D4E3F5"/><text x="761" y="283" class="chip">数据中心</text>
+    <rect x="846" y="256" width="96" height="42" rx="21" fill="#FFFFFF" stroke="#D4E3F5"/><text x="871" y="283" class="chip">岗位对比</text>
+    <rect x="956" y="256" width="86" height="42" rx="21" fill="#FFFFFF" stroke="#D4E3F5"/><text x="979" y="283" class="chip">用户画像</text>
+
+    <line x1="600" y1="346" x2="600" y2="386" stroke="#5B7FA6" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="202" y="392" width="796" height="92" rx="22" fill="#F7FAFF" stroke="#CCDDF2" stroke-width="1.5"/>
+    <text x="242" y="428" class="layer-title">FastAPI API 层</text>
+    <text x="242" y="455" class="layer-sub">统一承接 Agent、导入、会话、报告与用户相关接口</text>
+    <rect x="555" y="413" width="78" height="38" rx="19" fill="#FFFFFF" stroke="#D7E3F2"/><text x="574" y="438" class="chip">Agent</text>
+    <rect x="644" y="413" width="84" height="38" rx="19" fill="#FFFFFF" stroke="#D7E3F2"/><text x="662" y="438" class="chip">Imports</text>
+    <rect x="739" y="413" width="90" height="38" rx="19" fill="#FFFFFF" stroke="#D7E3F2"/><text x="758" y="438" class="chip">Sessions</text>
+    <rect x="840" y="413" width="84" height="38" rx="19" fill="#FFFFFF" stroke="#D7E3F2"/><text x="858" y="438" class="chip">Reports</text>
+    <rect x="935" y="413" width="62" height="38" rx="19" fill="#FFFFFF" stroke="#D7E3F2"/><text x="952" y="438" class="chip">User</text>
+
+    <line x1="420" y1="486" x2="420" y2="528" stroke="#5B7FA6" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="780" y1="486" x2="780" y2="528" stroke="#5B7FA6" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="126" y="538" width="458" height="158" rx="24" fill="#F0F5FF" stroke="#C9DAF2" stroke-width="1.5"/>
+    <text x="164" y="576" class="layer-title">Agent 编排与结构化工具</text>
+    <text x="164" y="602" class="layer-sub">确定性工具负责事实检索，LLM 负责解释与风险提示</text>
+    <rect x="164" y="626" width="86" height="36" rx="18" fill="#FFFFFF" stroke="#D8E4F4"/><text x="181" y="649" class="chip">意图识别</text>
+    <rect x="262" y="626" width="86" height="36" rx="18" fill="#FFFFFF" stroke="#D8E4F4"/><text x="279" y="649" class="chip">岗位检索</text>
+    <rect x="360" y="626" width="86" height="36" rx="18" fill="#FFFFFF" stroke="#D8E4F4"/><text x="377" y="649" class="chip">分数匹配</text>
+    <rect x="458" y="626" width="86" height="36" rx="18" fill="#FFFFFF" stroke="#D8E4F4"/><text x="475" y="649" class="chip">风险分析</text>
+
+    <rect x="616" y="538" width="458" height="158" rx="24" fill="#EFFBF7" stroke="#C9E5DD" stroke-width="1.5"/>
+    <text x="654" y="576" class="layer-title">数据导入与清洗流水线</text>
+    <text x="654" y="602" class="layer-sub">把复杂 Excel 转为可核验的结构化数据</text>
+    <rect x="654" y="626" width="86" height="36" rx="18" fill="#FFFFFF" stroke="#D5EADF"/><text x="671" y="649" class="chip">Sheet识别</text>
+    <rect x="752" y="626" width="86" height="36" rx="18" fill="#FFFFFF" stroke="#D5EADF"/><text x="769" y="649" class="chip">字段映射</text>
+    <rect x="850" y="626" width="86" height="36" rx="18" fill="#FFFFFF" stroke="#D5EADF"/><text x="867" y="649" class="chip">清洗预览</text>
+    <rect x="948" y="626" width="96" height="36" rx="18" fill="#FFFFFF" stroke="#D5EADF"/><text x="960" y="649" class="chip">多输出拆分</text>
+
+    <path d="M420 698 V724 H600 V746" fill="none" stroke="#5B7FA6" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M780 698 V724 H600 V746" fill="none" stroke="#5B7FA6" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="202" y="750" width="796" height="84" rx="24" fill="#F8FBFF" stroke="#CBDDF3" stroke-width="1.5"/>
+    <text x="242" y="785" class="layer-title">SQLite 本地结构化存储</text>
+    <text x="242" y="812" class="layer-sub">岗位 · 分数线 · 报名统计 · 资格复审 / 成绩聚合数据</text>
+    <rect x="712" y="774" width="64" height="32" rx="16" fill="#FFFFFF" stroke="#D7E3F2"/><text x="729" y="795" class="storage">岗位</text>
+    <rect x="786" y="774" width="78" height="32" rx="16" fill="#FFFFFF" stroke="#D7E3F2"/><text x="804" y="795" class="storage">分数线</text>
+    <rect x="874" y="774" width="86" height="32" rx="16" fill="#FFFFFF" stroke="#D7E3F2"/><text x="892" y="795" class="storage">报名统计</text>
+    <rect x="970" y="774" width="96" height="32" rx="16" fill="#FFFFFF" stroke="#D7E3F2"/><text x="982" y="795" class="storage">成绩聚合</text>
+  </g>
+</svg>
