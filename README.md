@@ -283,17 +283,17 @@ Agent 会解析问题中的条件，例如：
 
 ## 界面预览
 
-> 当前公开仓库不附带真实数据截图。后续可使用虚构或充分脱敏的数据补充界面示例。
+> 当前公开仓库不附带真实数据截图。后续可使用虚构数据或充分脱敏数据补充界面示例。
+>
+> 截图建议放在 `docs/assets/screenshots/` 目录下，避免出现真实姓名、准考证号、身份证号、手机号、Token、API Key 等敏感信息。
 
-| 招考分析师 | 数据导入 | 数据中心 |
-| ----- | ---- | ---- |
-| 待补充   | 待补充  | 待补充  |
+| 招考分析师 | 数据导入 |
+| --- | --- |
+| 待补充：`docs/assets/screenshots/agent-analyst.png` | 待补充：`docs/assets/screenshots/import-preview.png` |
 
-建议后续将截图放到：
-
-```text
-docs/assets/screenshots/
-```
+| 数据中心 | 岗位卡片 |
+| --- | --- |
+| 待补充：`docs/assets/screenshots/data-center.png` | 待补充：`docs/assets/screenshots/job-card.png` |
 
 ---
 
