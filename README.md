@@ -31,10 +31,6 @@
   <a href="#-roadmap">Roadmap</a>
 </p>
 
-<p align="center">
-  <img src="docs/assets/hero.svg" alt="Exam Agent 招考数据智能分析工作台" width="900">
-</p>
-
 ---
 
 > Exam Agent 不是给聊天界面套一层招考提示词，而是把可核验的结构化数据工具与 Agent 分析能力组合起来：数据由确定性流程检索、清洗和聚合，LLM 负责理解问题、组织解释与提示风险。
@@ -98,12 +94,6 @@ Exam Agent 是一个面向公务员、省考、国考、事业单位等招考场
 
 <p align="center">
   <img src="docs/assets/screenshots/score-reference.png" alt="分数线参考" width="900" />
-</p>
-
-### 数据集列表
-
-<p align="center">
-  <img src="docs/assets/screenshots/data-center-datasets.png" alt="数据集列表" width="900" />
 </p>
 
 ---
@@ -622,17 +612,6 @@ curl -X POST "http://127.0.0.1:18100/api/v1/imports/upload" \
 * [x] 敏感字段过滤
 * [x] 数据来源提示与免责声明
 * [x] GitHub 公开版数据清理
-
-### 计划中
-
-* [ ] 补充脱敏示例数据
-* [ ] 补充界面截图
-* [ ] 增加 Docker 启动方式
-* [ ] 增加自动化测试
-* [ ] 增加更多导入模板
-* [ ] 优化多轮对话记忆
-* [ ] 接入更完整的政策 RAG 服务
-* [ ] 增加部署说明
 
 ---
 
