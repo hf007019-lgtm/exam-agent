@@ -1,15 +1,20 @@
-# Screenshots
+# Exam Agent Screenshots
 
-该目录用于存放 Exam Agent 的演示截图。
+这些图片可放入项目目录：
 
-注意：
+docs/assets/screenshots/
 
-- 只能放虚构数据截图或充分脱敏截图。
-- 不要上传真实考生姓名、准考证号、身份证号、手机号。
-- 不要上传真实数据库截图。
-- 不要上传包含真实 API Key、Cookie、Token 的截图。
-- 推荐截图文件名：
-  - agent-analyst.png
-  - import-preview.png
-  - data-center.png
-  - job-card.png
+建议 README 使用：
+
+| 招考分析师 | 数据导入 |
+| --- | --- |
+| ![](docs/assets/screenshots/agent-analyst.png) | ![](docs/assets/screenshots/import-preview.png) |
+
+| 数据中心 | 岗位卡片 |
+| --- | --- |
+| ![](docs/assets/screenshots/data-center.png) | ![](docs/assets/screenshots/job-card.png) |
+
+可选补充：
+
+- docs/assets/screenshots/score-reference.png
+- docs/assets/screenshots/data-center-datasets.png
