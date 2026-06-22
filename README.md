@@ -66,6 +66,48 @@ Exam Agent 是一个面向公务员、省考、国考、事业单位等招考场
 
 ---
 
+## 界面预览
+
+> 以下截图使用本地演示数据或公开招考数据整理后展示，不包含姓名、准考证号、身份证号、手机号等个人敏感信息。
+
+### 招考分析师
+
+<p align="center">
+  <img src="docs/assets/screenshots/agent-analyst.png" alt="招考分析师" width="900" />
+</p>
+
+### 数据导入
+
+<p align="center">
+  <img src="docs/assets/screenshots/import-preview.png" alt="数据导入" width="900" />
+</p>
+
+### 数据中心
+
+<p align="center">
+  <img src="docs/assets/screenshots/data-center.png" alt="数据中心" width="900" />
+</p>
+
+### 岗位卡片
+
+<p align="center">
+  <img src="docs/assets/screenshots/job-card.png" alt="岗位卡片" width="900" />
+</p>
+
+### 分数线参考
+
+<p align="center">
+  <img src="docs/assets/screenshots/score-reference.png" alt="分数线参考" width="900" />
+</p>
+
+### 数据集列表
+
+<p align="center">
+  <img src="docs/assets/screenshots/data-center-datasets.png" alt="数据集列表" width="900" />
+</p>
+
+---
+
 ## 为什么做这个项目
 
 真实选岗通常不是简单问一句“推荐岗位”就能解决。
@@ -286,24 +328,6 @@ Agent 会解析问题中的条件，例如：
 | 用户画像  | 保存地区、学历、专业、身份等长期筛选条件  |
 | 分析记录  | 保留会话、工具调用和报告记录        |
 | 数据安全  | 默认隐藏敏感字段，并提示数据边界      |
-
----
-
-## 界面预览
-
-> 以下截图使用本地演示数据或公开招考数据整理后展示，不包含姓名、准考证号、身份证号、手机号等个人敏感信息。
-
-| 招考分析师 | 数据导入 |
-| --- | --- |
-| ![](docs/assets/screenshots/agent-analyst.png) | ![](docs/assets/screenshots/import-preview.png) |
-
-| 数据中心 | 岗位卡片 |
-| --- | --- |
-| ![](docs/assets/screenshots/data-center.png) | ![](docs/assets/screenshots/job-card.png) |
-
-| 分数线参考 | 数据集列表 |
-| --- | --- |
-| ![](docs/assets/screenshots/score-reference.png) | ![](docs/assets/screenshots/data-center-datasets.png) |
 
 ---
 
