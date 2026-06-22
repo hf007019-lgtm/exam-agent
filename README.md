@@ -31,6 +31,10 @@
   <a href="#-roadmap">Roadmap</a>
 </p>
 
+<p align="center">
+  <img src="docs/assets/hero.svg" alt="Exam Agent 招考数据智能分析工作台" width="900">
+</p>
+
 ---
 
 > Exam Agent 不是给聊天界面套一层招考提示词，而是把可核验的结构化数据工具与 Agent 分析能力组合起来：数据由确定性流程检索、清洗和聚合，LLM 负责理解问题、组织解释与提示风险。
@@ -266,6 +270,10 @@ Agent 会解析问题中的条件，例如：
 
 ## 功能总览
 
+<p align="center">
+  <img src="docs/assets/features.svg" alt="Exam Agent 核心功能模块" width="900">
+</p>
+
 | 模块    | 能力                    |
 | ----- | --------------------- |
 | 招考分析师 | 自然语言问答、岗位推荐、单岗分析、风险判断 |
@@ -308,31 +316,11 @@ Agent 会解析问题中的条件，例如：
 
 ## Agent 工作流
 
-```text
-用户问题
-  ↓
-意图识别
-  ↓
-解析省份、城市、学历、专业、岗位代码等条件
-  ↓
-调用结构化工具检索岗位
-  ↓
-匹配官方分数线 / 资格复审样本 / 候选成绩样本
-  ↓
-补充报名缴费数据与岗位限制
-  ↓
-生成岗位卡片
-  ↓
-输出风险提示、数据来源和免责声明
-```
+<p align="center">
+  <img src="docs/assets/agent-workflow.svg" alt="Exam Agent Agent 工作流" width="900">
+</p>
 
-Agent 优先使用本地结构化工具查询事实。LLM 主要负责：
-
-* 理解用户问题
-* 组织回答结构
-* 总结风险
-* 解释筛选结果
-* 生成自然语言建议
+Agent 优先使用本地结构化工具查询事实。LLM 主要负责理解用户问题、组织回答结构、总结风险、解释筛选结果和生成自然语言建议。
 
 当数据缺失时，系统会明确说明，例如：
 
@@ -344,51 +332,21 @@ Agent 优先使用本地结构化工具查询事实。LLM 主要负责：
 
 ## 数据导入工作流
 
-```text
-招考 Excel / CSV
-  ↓
-读取 Sheet
-  ↓
-识别表头和表格类型
-  ↓
-字段映射与人工确认
-  ↓
-清洗预览
-  ↓
-检查有效行、异常行、重复行
-  ↓
-确认入库
-  ↓
-写入 SQLite 正式表
-  ↓
-数据中心在线核对
-```
+<p align="center">
+  <img src="docs/assets/import-pipeline.svg" alt="Exam Agent 数据导入工作流" width="900">
+</p>
 
-普通单表导入：
-
-```text
-岗位表 → exam_jobs
-进面分数线表 → exam_score_lines
-报名统计表 → exam_signup_stats
-资格复审名单 → exam_review_candidates
-候选成绩表 → exam_candidate_scores
-专业目录表 → exam_major_catalog
-```
-
-混合表多输出：
-
-```text
-一个 Sheet
-  ├─ 岗位表
-  ├─ 进面分数线表
-  └─ 报名 / 缴费人数表
-```
+导入流程支持普通单表与混合表；一个 Sheet 可按识别结果拆分为岗位表、进面分数线表和报名 / 缴费人数表，并在人工确认后写入 SQLite。
 
 ---
 
 ## 数据安全
 
 本项目默认不上传、不公开、不展示个人敏感数据。
+
+<p align="center">
+  <img src="docs/assets/data-security.svg" alt="Exam Agent 数据安全设计" width="900">
+</p>
 
 ### 默认忽略
 

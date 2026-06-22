@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Exam Agent 数据导入工作流</title><desc id="desc">招考表格读取、识别、清洗、确认和入库流程</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1200" y2="760"><stop stop-color="#0B1727"/><stop offset="1" stop-color="#16172D"/></linearGradient><linearGradient id="n"><stop stop-color="#63ACC6"/><stop offset="1" stop-color="#8E7DC4"/></linearGradient><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0l8 4-8 4z" fill="#5C829B"/></marker></defs>
+  <rect x="1" y="1" width="1198" height="758" rx="28" fill="url(#bg)" stroke="#293F59" stroke-width="2"/>
+  <text x="600" y="56" text-anchor="middle" fill="#F1F5F9" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="32" font-weight="700">数据导入工作流</text>
+  <g font-family="Arial,'Microsoft YaHei',sans-serif">
+    <path d="M315 145h85M600 145h85M885 145h70v130H885M685 275h-85M400 275h-85M215 323v92h100M515 415h85M800 415h85M985 463v92H885M685 555h-85" fill="none" stroke="#5C829B" stroke-width="3" marker-end="url(#a)"/>
+    <g fill="#12283E" stroke="#376078">
+      <rect x="85" y="100" width="230" height="90" rx="19"/><rect x="400" y="100" width="200" height="90" rx="19"/><rect x="685" y="100" width="200" height="90" rx="19"/>
+      <rect x="685" y="230" width="200" height="90" rx="19"/><rect x="400" y="230" width="200" height="90" rx="19"/><rect x="85" y="230" width="230" height="90" rx="19"/>
+      <rect x="315" y="370" width="200" height="90" rx="19"/><rect x="600" y="370" width="200" height="90" rx="19"/><rect x="885" y="370" width="200" height="90" rx="19"/>
+      <rect x="685" y="510" width="200" height="90" rx="19"/><rect x="400" y="510" width="200" height="90" rx="19"/>
+    </g>
+    <g fill="#ECF3F7" font-size="18" font-weight="700" text-anchor="middle">
+      <text x="200" y="142">招考 Excel / CSV</text><text x="200" y="166" fill="#91A9BA" font-size="14" font-weight="400">本地文件</text>
+      <text x="500" y="153">读取 Sheet</text>
+      <text x="785" y="142">识别表头</text><text x="785" y="166" fill="#91A9BA" font-size="14" font-weight="400">判断表格类型</text>
+      <text x="785" y="272">字段映射</text><text x="785" y="296" fill="#91A9BA" font-size="14" font-weight="400">人工确认</text>
+      <text x="500" y="283">清洗预览</text>
+      <text x="200" y="270">质量检查</text><text x="200" y="294" fill="#91A9BA" font-size="14" font-weight="400">有效 / 异常 / 重复行</text>
+      <text x="415" y="423">确认入库</text>
+      <text x="700" y="423">写入 SQLite</text>
+      <text x="985" y="412">数据中心</text><text x="985" y="436" fill="#91A9BA" font-size="14" font-weight="400">在线核对</text>
+      <text x="785" y="563">完成导入</text>
+      <text x="500" y="563">可追溯结果</text>
+    </g>
+    <g transform="translate(80 635)">
+      <rect width="1040" height="82" rx="21" fill="#191F38" stroke="#4A476B"/>
+      <text x="30" y="34" fill="#D8D2E7" font-size="17" font-weight="700">一个 Sheet 可拆分为：</text>
+      <g fill="#AFA8C4" font-size="15"><rect x="245" y="18" width="180" height="46" rx="15" fill="#242944" stroke="#514C74"/><text x="335" y="47" text-anchor="middle">岗位表</text><rect x="445" y="18" width="220" height="46" rx="15" fill="#242944" stroke="#514C74"/><text x="555" y="47" text-anchor="middle">进面分数线表</text><rect x="685" y="18" width="275" height="46" rx="15" fill="#242944" stroke="#514C74"/><text x="822" y="47" text-anchor="middle">报名 / 缴费人数表</text></g>
+    </g>
+  </g>
+</svg>

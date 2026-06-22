@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Exam Agent 招考数据智能分析工作台</title>
+  <desc id="desc">从招考表格到结构化数据，再到 AI 辅助选岗决策</desc>
+  <defs>
+    <linearGradient id="bg" x1="40" y1="20" x2="1160" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#0B1626"/><stop offset=".55" stop-color="#111B32"/><stop offset="1" stop-color="#17172D"/></linearGradient>
+    <linearGradient id="accent" x1="130" y1="110" x2="770" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#75B9D1"/><stop offset="1" stop-color="#9786CF"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="26"/></filter>
+  </defs>
+  <rect x="1" y="1" width="1198" height="418" rx="28" fill="url(#bg)" stroke="#2A405B" stroke-width="2"/>
+  <circle cx="1040" cy="84" r="120" fill="#547FA0" opacity=".12" filter="url(#glow)"/><circle cx="850" cy="340" r="100" fill="#7665AF" opacity=".12" filter="url(#glow)"/>
+  <g transform="translate(75 82)">
+    <rect width="76" height="76" rx="20" fill="#13263C" stroke="#67A9C4" stroke-width="2"/>
+    <path d="M20 20h29l11 11v27H20zM49 20v12h11M28 39h23M28 48h16" fill="none" stroke="#8BC9D4" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="57" cy="57" r="12" fill="#1A3048" stroke="#9C8AD0" stroke-width="2"/><path d="M52 57l4 4 7-9" fill="none" stroke="#86CEC3" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="175" y="122" fill="#F3F6FA" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="58" font-weight="700">Exam Agent</text>
+  <text x="77" y="205" fill="url(#accent)" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="34" font-weight="600">招考数据智能分析工作台</text>
+  <text x="78" y="253" fill="#A9B8C8" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="22">从招考 Excel 到结构化数据，再到 AI 辅助选岗决策</text>
+  <g font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#C5D2DF">
+    <g transform="translate(78 300)"><rect width="102" height="38" rx="19" fill="#142940" stroke="#365873"/><text x="51" y="25" text-anchor="middle">FastAPI</text></g>
+    <g transform="translate(192 300)"><rect width="92" height="38" rx="19" fill="#142940" stroke="#365873"/><text x="46" y="25" text-anchor="middle">SQLite</text></g>
+    <g transform="translate(296 300)"><rect width="132" height="38" rx="19" fill="#142940" stroke="#365873"/><text x="66" y="25" text-anchor="middle">Excel Import</text></g>
+    <g transform="translate(440 300)"><rect width="134" height="38" rx="19" fill="#1B263F" stroke="#514C79"/><text x="67" y="25" text-anchor="middle">Data Cleaning</text></g>
+    <g transform="translate(586 300)"><rect width="112" height="38" rx="19" fill="#1B263F" stroke="#514C79"/><text x="56" y="25" text-anchor="middle">AI Agent</text></g>
+    <g transform="translate(710 300)"><rect width="132" height="38" rx="19" fill="#1B263F" stroke="#514C79"/><text x="66" y="25" text-anchor="middle">Job Analysis</text></g>
+  </g>
+  <g transform="translate(900 128)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="218" height="174" rx="22" fill="#111F34" stroke="#354D6B" stroke-width="2"/>
+    <path d="M30 42h95M30 69h62M30 96h74" stroke="#57748E" stroke-width="6"/>
+    <path d="M34 138l32-22 28 10 39-45 45 22" stroke="#79BBD0" stroke-width="4"/>
+    <circle cx="133" cy="81" r="6" fill="#9A89CD" stroke="none"/><circle cx="178" cy="103" r="6" fill="#82CDC1" stroke="none"/>
+  </g>
+</svg>

@@ -1,22 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
   <title id="title">Exam Agent Logo</title>
-  <desc id="desc">A low-saturation blue EA monogram surrounded by connected data nodes.</desc>
+  <desc id="desc">融合招考数据表、AI Agent 与决策分析的图形标志</desc>
   <defs>
-    <linearGradient id="bg" x1="24" y1="20" x2="136" y2="140" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7893AB"/>
-      <stop offset="1" stop-color="#4F6F8B"/>
+    <linearGradient id="g" x1="24" y1="20" x2="176" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5EA7C8"/><stop offset="1" stop-color="#8B7BC4"/>
     </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#07111F" flood-opacity=".28"/></filter>
   </defs>
-  <rect x="12" y="12" width="136" height="136" rx="36" fill="#EEF3F6"/>
-  <circle cx="80" cy="80" r="49" fill="none" stroke="#A9BAC8" stroke-width="2" stroke-dasharray="3 7"/>
-  <path d="M43 47h23M43 47v66h25M43 79h20M91 113l18-66 18 66M98 88h22" fill="none" stroke="url(#bg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#6F8BA3">
-    <circle cx="80" cy="24" r="5"/>
-    <circle cx="136" cy="80" r="5"/>
-    <circle cx="80" cy="136" r="5"/>
-    <circle cx="24" cy="80" r="5"/>
-  </g>
-  <g stroke="#9FB2C1" stroke-width="2">
-    <path d="M80 29v8M131 80h-8M80 131v-8M29 80h8"/>
+  <g filter="url(#s)">
+    <rect x="25" y="25" width="150" height="150" rx="38" fill="#0F1B2D" stroke="url(#g)" stroke-width="3"/>
+    <path d="M62 58h61l17 17v68H62z" fill="#14263D" stroke="#78B5CC" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M123 58v18h17" fill="none" stroke="#78B5CC" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M77 91h49M77 107h49M77 123h30M92 83v48" stroke="#58758C" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="132" cy="128" r="27" fill="#182A43" stroke="#9A89CD" stroke-width="3"/>
+    <path d="M119 129l8 8 18-20" fill="none" stroke="#8ED1C7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="54" cy="72" r="6" fill="#8ED1C7"/><path d="M54 78v12M46 85h16" stroke="#8ED1C7" stroke-width="3" stroke-linecap="round"/>
   </g>
 </svg>
